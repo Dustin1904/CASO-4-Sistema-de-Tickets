@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
-import Veterinario from '../models/veterinario.js'
-import Paciente from '../models/paciente.js'
+import Usuario from '../models/usuarios.js'
+//import Paciente from '../models/paciente.js'
 
 const verificarAutenticacion = async (req, res, next) => {
 
@@ -9,13 +9,14 @@ const verificarAutenticacion = async (req, res, next) => {
     if (!authorization) return res.status(401).json({ res: 'Acceso denegado, proporciona un token válido' })
 
     try {
-        const { id, rol } = jwt.verify(authorization.split(' ')[1], process.env.JWT_SECRET)
+        const { id /*, rol*/ } = jwt.verify(authorization.split(' ')[1], process.env.JWT_SECRET)
 
-        if (rol === 'veterinario') {
-            req.veterinarioBDD = await Veterinario.findById(id).lean().select('-password')
-        } else if (rol === 'paciente') {
-            req.pacienteBDD = await Paciente.findById(id).lean().select('-password')
-        }
+        // if (rol === 'veterinario') {
+        //     req.veterinarioBDD = await Veterinario.findById(id).lean().select('-password')
+        // } else if (rol === 'paciente') {
+        //     req.pacienteBDD = await Paciente.findById(id).lean().select('-password')
+        // }
+        req.usuarioBDD = await Usuario.findById(id).lean().select('-password');
         
         next()
 
