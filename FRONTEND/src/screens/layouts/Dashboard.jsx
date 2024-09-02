@@ -1,15 +1,106 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 export default function Dashboard() {
+	const [perfil, setPerfil] = useState({});
+
+	const getDataUser = async () => {
+		try {
+			const respuesta = await axios.get(
+				`${process.env.REACT_APP_BACKEND}/perfil`,
+				{
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem("token")}`,
+					},
+				}
+			);
+			setPerfil(respuesta.data);
+			console.log(respuesta.data);
+		} catch (error) {
+			console.log("Error: ", error);
+		}
+	};
+
+	useEffect(() => {
+		getDataUser();
+	}, []);
+
 	return (
 		<>
 			<main className="flex min-h-screen md:flex-row flex-col">
 				<nav className="bg-[url('https://i.gifer.com/QFNv.gif')] flex flex-col items-center bg-cover bg-center md:w-1/5 w-full">
 					<img className="max-w-36 pt-10" src="/images/tech.png" alt="" />
-					<h2 className="text-white text-center font-bold text-3xl md:mb-20 mb-5">
+					<h2 className="text-white text-center font-bold text-3xl md:mb-10 mb-5">
 						Dashboard
 					</h2>
+					<h3 className="text-white md:mb-10 mb-5">
+						{" "}
+						Bienvenido - {perfil.nombre || "Usuario"}{" "}
+					</h3>
+					{}
 					<ul className="flex flex-col justify-center text-white gap-5 w-full text-start px-12 items-center">
+						<li>
+						<Link
+								to="/dashboard/perfil"
+								className="text-2xl flex items-center gap-3"
+							>
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+									stroke="#ffffff"
+									className="size-8"
+								>
+									<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+									<g
+										id="SVGRepo_tracerCarrier"
+										strokeLinecap="round"
+										strokelLinejoin="round"
+									></g>
+									<g id="SVGRepo_iconCarrier">
+										{" "}
+										<circle
+											cx="9"
+											cy="9"
+											r="2"
+											stroke="#ffffff"
+											strokeWidth="1.5"
+										></circle>{" "}
+										<path
+											d="M13 15C13 16.1046 13 17 9 17C5 17 5 16.1046 5 15C5 13.8954 6.79086 13 9 13C11.2091 13 13 13.8954 13 15Z"
+											stroke="#ffffff"
+											strokeWidth="1.5"
+										></path>{" "}
+										<path
+											d="M22 12C22 15.7712 22 17.6569 20.8284 18.8284C19.6569 20 17.7712 20 14 20H10C6.22876 20 4.34315 20 3.17157 18.8284C2 17.6569 2 15.7712 2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C21.298 5.64118 21.5794 6.2255 21.748 7"
+											stroke="#ffffff"
+											stroke-width="1.5"
+											stroke-linecap="round"
+										></path>{" "}
+										<path
+											d="M19 12H15"
+											stroke="#ffffff"
+											strokeWidth="1.5"
+											strokeLinecap="round"
+										></path>{" "}
+										<path
+											d="M19 9H14"
+											stroke="#ffffff"
+											strokeWidth="1.5"
+											strokeLinecap="round"
+										></path>{" "}
+										<path
+											d="M19 15H16"
+											stroke="#ffffff"
+											strokeWidth="1.5"
+											strokeLinecap="round"
+										></path>{" "}
+									</g>
+								</svg>
+								Perfil
+							</Link>
+						</li>
 						<li>
 							<Link
 								to="/dashboard/clientes"

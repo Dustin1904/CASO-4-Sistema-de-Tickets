@@ -57,6 +57,7 @@ export default function VisualizarEspecificData( ) {
             <h1 className="text-white"> Visualizar datos de {datos.nombre || "ticket " + datos.codigo } </h1>
             <hr />
             {Object.keys(datos).map(( dato ) => {
+                if ( dato.includes("id") ) return;
                 if (dato === "cliente" || dato === "tecnico") {
                     return(
                         <TablaRegistros className="w-full text-white" key={dato} informacion={[datos[dato]]} mostrarAcciones={false} columnaAcciones={false} ></TablaRegistros>

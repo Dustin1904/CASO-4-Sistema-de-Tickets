@@ -59,7 +59,7 @@ export default function ActualizarDatos({ formulario , children , registroSelecc
 		<div className="flex justify-center items-center backdrop-blur-sm bg-black/25 inset-0 m-auto absolute z-10">
 
             <form className="flex flex-col gap-6 backdrop-blur-sm bg-black/10 z-20 items-center border rounded-lg w-1/2 overflow-y-scroll p-5 h-96" onSubmit={handleSubmit}>
-                <h1 className="text-white text-3xl" > Actualización de {formulario} </h1>
+                <h1 className="text-white text-3xl" > Actualización de {formulario || "Usuarios"} </h1>
                 <hr className="border border-white w-full" /> 
                 { Object.keys(form).map(( input ) => {
                     if ( input === "genero" ) {

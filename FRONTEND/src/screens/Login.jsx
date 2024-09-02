@@ -27,7 +27,7 @@ export default function PantallaLogin() {
             const respuesta = await axios.post(`${process.env.REACT_APP_BACKEND}/login`,form);
             console.log(respuesta.data);
 			localStorage.setItem("token" , respuesta.data.token)
-            navigate("/dashboard/clientes");
+            navigate("/dashboard/perfil");
         } catch (error) {
             console.log( error);
         }
