@@ -16,7 +16,6 @@ export default function Dashboard() {
 				}
 			);
 			setPerfil(respuesta.data);
-			console.log(respuesta.data);
 		} catch (error) {
 			console.log("Error: ", error);
 		}
@@ -30,7 +29,7 @@ export default function Dashboard() {
 		<>
 			<main className="flex min-h-screen md:flex-row flex-col">
 				<nav className="bg-[url('https://i.gifer.com/QFNv.gif')] flex flex-col items-center bg-cover bg-center md:w-1/5 w-full">
-					<img className="max-w-36 pt-10" src="/images/tech.png" alt="" />
+					<img className="max-w-36 pt-10" src="https://img.freepik.com/vector-premium/silueta-coche-fondo-negro_498574-1235.jpg?w=740" alt="" />
 					<h2 className="text-white text-center font-bold text-3xl md:mb-10 mb-5">
 						Dashboard
 					</h2>
@@ -128,7 +127,7 @@ export default function Dashboard() {
 						</li>
 						<li>
 							<Link
-								to="/dashboard/tecnicos"
+								to="/dashboard/vehiculos"
 								className="text-2xl flex items-center gap-3"
 							>
 								<svg
@@ -161,12 +160,12 @@ export default function Dashboard() {
 										strokeLinejoin="round"
 									/>
 								</svg>
-								Tecnicos
+								Vehiculos
 							</Link>
 						</li>
 						<li>
 							<Link
-								to="/dashboard/tickets"
+								to="/dashboard/reservas"
 								className="text-2xl flex items-center gap-3 "
 							>
 								<svg
@@ -186,7 +185,7 @@ export default function Dashboard() {
 									<path d="M15 17l0 2" />
 									<path d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-3a2 2 0 0 0 0 -4v-3a2 2 0 0 1 2 -2" />
 								</svg>
-								Tickets
+								Reservas
 							</Link>
 						</li>
 					</ul>

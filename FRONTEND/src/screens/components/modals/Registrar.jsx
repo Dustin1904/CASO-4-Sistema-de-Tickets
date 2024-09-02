@@ -15,21 +15,20 @@ export default function RegistrarDatos({ formulario , children }) {
 			"direccion":"text",
 			"fecha_nacimiento":"date",
 			"email":"email",
-			"dependencia":"text",
 			"telefono":"tel"
 		},
-		tecnicos: {
-			"cedula":"text",
-			"nombre":"text",
-			"apellido":"text",
-			"genero":"text",
-			"fecha_nacimiento":"date",
-			"direccion":"text",
-			"email":"email",
-			"telefono":"tel",
+		vehiculos: {
+			"marca":"text",
+			"modelo":"text",
+			"placa":"text",
+			"anio_fabricacion":"text",
+			"tipo_vehiculo":"text",
+			"kilometraje":"text",
+			"descripcion":"text",
+			"color":"text",
 		},
-		tickets: {"descripcion":"text",
-			"tecnico":"text", 
+		reservas: {"descripcion":"text",
+			"vehiculo":"text", 
 			"cliente":"text"
 		},
 	};	
@@ -67,16 +66,17 @@ export default function RegistrarDatos({ formulario , children }) {
 			<h1 className="text-white text-3xl" > Registro de {formulario} </h1>
 			<hr className="border border-white w-full" /> 
 			{ Object.keys(ejemplo[formulario]).map(( input ) => {
-				if ( input === "genero" ) {
+				if ( input === "tipo" ) {
 					return(
 						<div className="relative w-4/5">
 							<select className="bg-transparent w-full rounded-full border-2 text-white py-1 pr-3 pl-8 placeholder:text-white focus:outline-none autofill:bg-transparent" 
 							name={input} value={form[input]} onChange={handleChange}
 							>
-								<option value="">Genero</option>
-								<option className="text-black" value="Hombre"> Hombre </option>
-								<option className="text-black" value="Mujer"> Mujer </option>
-								<option className="text-black" value="Prefiero no decirlo"> Prefiero no decirlo </option>
+								<option value="">Tipo de vehiculo</option>
+								<option className="text-black" value="Automóvil"> Automóvil </option>
+								<option className="text-black" value="Camión"> Camión </option>
+								<option className="text-black" value="Bus"> Bus </option>
+								<option className="text-black" value="Camioneta"> Camioneta </option>
 							</select>
 						</div>
 					)

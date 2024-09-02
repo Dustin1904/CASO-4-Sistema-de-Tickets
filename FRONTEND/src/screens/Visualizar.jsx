@@ -22,12 +22,12 @@ export default function VisualizarEspecificData( ) {
             console.log(respuesta.data);
             
             
-            if (params?.formulario === "tickets") {
+            if (params?.formulario === "reservas") {
                 setDatos(respuesta.data)
             }else if ( params?.formulario === "clientes" ){
-                setDatos({...respuesta.data.cliente , tickets: respuesta.data.tickets});
-            }else if ( params?.formulario === "tecnicos"){
-                setDatos({...respuesta.data.tecnico , tickets: respuesta.data.tickets});
+                setDatos({...respuesta.data.cliente , reservas: respuesta.data.reserva});
+            }else if ( params?.formulario === "vehiculos"){
+                setDatos({...respuesta.data.vehiculo, reservas: respuesta.data.reserva});
             }
             
             console.log(ticketsRelacionados);
@@ -54,16 +54,16 @@ export default function VisualizarEspecificData( ) {
 
     return(
         <div className="flex flex-col gap-3 backdrop-blur-sm bg-black/50 w-3/4 justify-center p-4 border rounded-lg" >
-            <h1 className="text-white"> Visualizar datos de {datos.nombre || "ticket " + datos.codigo } </h1>
+            <h1 className="text-white"> Visualizar datos de {datos.nombre ? "cliente " + datos.nombre : datos.placa ? "vehiculo " + datos.placa : "reserva " + datos.codigo} </h1>
             <hr />
             {Object.keys(datos).map(( dato ) => {
                 if ( dato.includes("id") ) return;
-                if (dato === "cliente" || dato === "tecnico") {
+                if (dato === "cliente" || dato === "vehiculo") {
                     return(
                         <TablaRegistros className="w-full text-white" key={dato} informacion={[datos[dato]]} mostrarAcciones={false} columnaAcciones={false} ></TablaRegistros>
                     )
                 }
-                if (dato === "tickets") {
+                if (dato === "reservas") {
                     return(
                         <TablaRegistros className="w-full text-white" informacion={datos[dato]} mostrarAcciones={false}></TablaRegistros>
                     )

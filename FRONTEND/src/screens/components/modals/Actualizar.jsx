@@ -8,9 +8,9 @@ export default function ActualizarDatos({ formulario , children , registroSelecc
 
     useEffect(() => {
         if ( registroSeleccionado ) {
-            if ( registroSeleccionado?.cliente?.cedula && registroSeleccionado?.tecnico?.cedula ) {
+            if ( registroSeleccionado?.cliente?.cedula && registroSeleccionado?.vehiculo?.placa ) {
                 registroSeleccionado.cliente = registroSeleccionado.cliente.cedula;
-                registroSeleccionado.tecnico = registroSeleccionado.tecnico.cedula;
+                registroSeleccionado.vehiculo = registroSeleccionado.vehiculo.placa;
             }
             setForm(registroSeleccionado);
         }
@@ -26,7 +26,7 @@ export default function ActualizarDatos({ formulario , children , registroSelecc
     const handleSubmit = async ( e ) => {
         e.preventDefault(); 
         try {
-            if (formulario === "tickets") {
+            if (formulario === "reservas") {
                 try {
                     const respuesta = await axios.put(`${process.env.REACT_APP_BACKEND}/${formulario}`,
                     form,

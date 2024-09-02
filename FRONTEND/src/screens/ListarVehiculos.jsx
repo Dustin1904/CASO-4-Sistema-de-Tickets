@@ -10,8 +10,8 @@ export default function ListarTec() {
     return (
         <>
             <BotonAcciones texto="Registrar Técnicos" accion={ ( ) => { setModalVisible(true) }} ></BotonAcciones>
-            <TablaRegistros registros="tecnicos"></TablaRegistros>
-            { modalVisible && <RegistrarDatos formulario="tecnicos"> <BotonAcciones texto="Cancelar" accion={ ( ) => { setModalVisible(false) }}></BotonAcciones> </RegistrarDatos> }
+            <TablaRegistros registros="vehiculos"></TablaRegistros>
+            { modalVisible && <RegistrarDatos formulario="vehiculos"> <BotonAcciones texto="Cancelar" accion={ ( ) => { setModalVisible(false) }}></BotonAcciones> </RegistrarDatos> }
         </>
     );
 } 
