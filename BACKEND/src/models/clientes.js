@@ -42,13 +42,7 @@ const clientesSchema = new Schema({
     fecha_nacimiento: {
         type: Date,
         required: true,
-    },
-    dependencia: {
-        type: String,
-        required: true,
-        trim: true
-    }
-    
+    }   
 }, {
     timestamps: true,
 });

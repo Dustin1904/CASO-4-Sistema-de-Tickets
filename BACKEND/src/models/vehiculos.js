@@ -1,41 +1,41 @@
 import { Schema, model, Types } from "mongoose";
 
-const tecnicosSchema = new Schema({
-    nombre: {
+const vehiculosSchema = new Schema({
+    marca: {
         type: String,
         require: true,
         trim: true,
     },
-    apellido: {
+    modelo: {
         type: String,
         require: true,
         trim: true,
     },
-    cedula: {
+    placa: {
         type: String,
         require: true,
         trim: true
     },
-    fecha_nacimiento: {
-        type: Date,
+    anio_fabricacion: {
+        type: Number,
         require: true,
     },
-    genero: {
+    tipo_vehiculo: {
         type: String,
-        enum: ["Hombre","Mujer","Prefiero no decirlo"],
-        require: false,
-    },
-    direccion: {
-        type: String,
+        enum: ["Automóvil","Camión","Bus","Camioneta"],
         require: true,
-        trim: true
     },
-    telefono: {
+    kilometraje: {
         type: String,
         require: true,
         trim: true
     },
-    email: {
+    descripcion: {
+        type: String,
+        require: true,
+        trim: true
+    },
+    color: {
         type: String,
         require: true,
         unique: true,
@@ -45,4 +45,4 @@ const tecnicosSchema = new Schema({
     timestamps: true,
 });
 
-export default model("Tecnico", tecnicosSchema);
+export default model("Vehiculo", vehiculosSchema);

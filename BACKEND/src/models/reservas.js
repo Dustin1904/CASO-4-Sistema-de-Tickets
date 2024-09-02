@@ -1,7 +1,6 @@
-import { Schema, model , Types } from 'mongoose'
-import bcrypt from "bcryptjs"
+import { Schema, model } from 'mongoose'
 
-const ticketSchema = new Schema({
+const reservaSchema = new Schema({
     codigo: {
         type: String,
         require: true,
@@ -12,9 +11,9 @@ const ticketSchema = new Schema({
         require: true,
         trim: true
     },
-    tecnico: {
+    vehiculo: {
         type: Schema.Types.ObjectId,
-        ref: 'Tecnico',
+        ref: 'Vehiculo',
         trim: true,
         default: null
     },
@@ -28,4 +27,4 @@ const ticketSchema = new Schema({
     timestamps:true
 })
 
-export default model('Ticket', ticketSchema);
+export default model('Reserva', reservaSchema);

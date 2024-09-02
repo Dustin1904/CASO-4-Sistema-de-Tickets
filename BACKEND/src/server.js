@@ -2,8 +2,8 @@ import express from "express";
 import cors from "cors";
 import routerUsuarios from "./routes/usuario.routes.js";
 import routerClientes from "./routes/cliente.routes.js";
-import routerTecnico from "./routes/tecnico.routes.js";
-import routerTicket from "./routes/ticket.routes.js"
+import routerVehiculos from "./routes/vehiculos.routes.js";
+import routerReserva from "./routes/reserva.routes.js"
 import "dotenv/config";
 import morgan from "morgan";
 import { createServer } from "http";
@@ -22,8 +22,8 @@ app.get("/", (_, res) => res.send("Server on"));
 
 app.use("/api", routerUsuarios);
 app.use("/api", routerClientes);
-app.use("/api", routerTecnico);
-app.use("/api", routerTicket);
+app.use("/api", routerVehiculos);
+app.use("/api", routerReserva);
 app.use((_, res) => res.status(404).json({ res: "404 - Endpoint not found" }));
 
 const server = createServer(app);

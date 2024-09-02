@@ -4,7 +4,7 @@ import Cliente from '../models/clientes.js';
 //import Tratamiento from '../models/tratamiento.js';
 //import Veterinario from '../models/veterinario.js';
 import { Types } from 'mongoose';
-import Tickets from "../models/tickets.js";
+import Reserva from "../models/reservas.js";
 
 const registrarCliente = async (req, res) => {
     const { email } = req.body;
@@ -74,11 +74,11 @@ const detalleCliente = async (req, res) => {
     
     const cliente = await Cliente.findById(id).select('-createdAt -updatedAt -__v')
 
-    const tickets = await Tickets.find().where('cliente').equals(id).populate("cliente", "_id cedula nombre apellido email telefono").populate("tecnico", "_id cedula nombre apellido email telefono").select("-createdAt -updatedAt -__v")
+    const reserva = await Reserva.find().where('cliente').equals(id).populate("cliente", "_id cedula nombre apellido email telefono").populate("vehiculo", "_id modelo placa").select("-createdAt -updatedAt -__v")
 
     if (!cliente) return res.status(404).json({ res: 'Cliente no encontrado' })
 
-    res.status(200).json({ cliente, tickets })
+    res.status(200).json({ cliente, reserva })
 };
 
 const actualizarCliente = async (req, res) => {
